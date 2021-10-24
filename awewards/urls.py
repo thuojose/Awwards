@@ -8,7 +8,8 @@ from django.conf import settings
 urlpatterns=[
     path('', views.register, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-    
+    path('home/',views.home, name='home'),
+    path('project/<int:project_id>[0-9]',views.project,name ='project'),
 ]
 
 if settings.DEBUG:
