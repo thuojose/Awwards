@@ -1,7 +1,7 @@
 from awewards import views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path,include
 from django.conf import settings
 
 
@@ -13,7 +13,7 @@ urlpatterns=[
     path('profile/',views.profile, name='profile'),
     path('post/', views.upload_form, name='post'),
     path('edit/', views.edit_prof, name='edit'),
-
+    path('search/', views.search, name = 'search'),
 ]
 
 if settings.DEBUG:

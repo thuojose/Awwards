@@ -14,15 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from awewards import views
+from django.contrib.auth import views
 from django.contrib.auth import views as auth_views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('awewards.urls')),
     path('accounts/logout/', auth_views.LogoutView, {'next_page': '/'}, name='logout'),
-    path('logout/', views.logout, name='logout'),
+    # path('logout/', views.logout, name='logout'),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('api-token-auth/', obtain_auth_token),
+    
+
 ]
